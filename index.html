@@ -1,61 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yusufcuğum'un Web Sitesi</title>
+  <title>Yusuf Kurt – Elektrik-Elektronik Mühendisi Adayı</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
       margin: 0;
-      padding: 0;
+      background-color: #f0f2f5;
+      color: #333;
+      text-align: center;
     }
     header {
-      background: #333;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
-    main {
       padding: 2rem;
-      max-width: 800px;
-      margin: auto;
+      background: linear-gradient(135deg, #003366, #006699);
+      color: white;
+    }
+    img.profile {
+      width: 150px;
+      border-radius: 50%;
+      border: 4px solid white;
+      margin-top: 1rem;
+    }
+    section {
+      padding: 2rem;
+    }
+    .card {
       background: white;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h1, h2 {
-      color: #444;
-    }
-    footer {
-      text-align: center;
+      margin: 1rem auto;
       padding: 1rem;
-      font-size: 0.9rem;
-      color: #666;
+      max-width: 500px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    .social a {
+      margin: 0 10px;
+      color: #006699;
+      text-decoration: none;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Yusufcuğum'un Web Sitesi</h1>
-  </header>
-  <main>
-    <h2>Ben Kimim?</h2>
-    <p>Ben Yusuf, Elektrik-Elektronik Mühendisliği öğrencisiyim. Uzay ve fizik konularına büyük ilgi duyuyorum.</p>
 
-    <h2>Projelerim</h2>
-    <ul>
-      <li>Arduino ile sıcaklık ölçüm sistemi</li>
-      <li>Bluetooth kontrollü LED projesi</li>
-      <li>Basit uydu takip simülasyonu (yakında)</li>
-    </ul>
+  <header>
+    <h1>Yusuf Kurt</h1>
+    <p>Elektrik-Elektronik Mühendisliği Öğrencisi • Uzay Meraklısı • Maker 🚀</p>
+    <img class="profile" src="https://yusufyk19.github.io/yusuf/fotograf.jpeg" alt="Yusuf Kurt">
+  </header>
+
+  <section>
+    <h2>Hakkımda</h2>
+    <div class="card">
+      <p>Merhaba! Ben Yusuf. Alanya Alaaddin Keykubat Üniversitesi'nde Elektrik-Elektronik Mühendisliği öğrencisiyim. Uzay, fizik ve enerji sistemleri ile ilgileniyorum. Amacım, teknolojiyle insan hayatını geliştiren projeler üretmek.</p>
+    </div>
+
+    <h2>Projeler</h2>
+    <div class="card">
+      <h3>⚡ Yıldırım Enerjisinden Elektrik Üretimi</h3>
+      <p>Yüksek voltajlı yıldırım deşarjlarını yakalayarak kontrollü bir şekilde elektrik enerjisine dönüştürmeyi hedefleyen teorik bir proje.</p>
+    </div>
+
+    <div class="card">
+      <h3>📌 Proje 2</h3>
+      <p>Yeni bir proje eklemek için çalışmalara devam ediyorum.</p>
+    </div>
 
     <h2>İletişim</h2>
-    <p>Bana ulaşmak istersen: <a href="mailto:yusuf@example.com">yusuf@example.com</a></p>
-  </main>
-  <footer>
-    &copy; 2025 Yusufcuğum. Tüm hakları saklıdır.
-  </footer>
+    <div class="card">
+      <p>📧 <a href="mailto:yusuf.kurt4956@gmail.com">yusuf.kurt4956@gmail.com</a></p>
+      <p class="social">
+        💻 <a href="https://github.com/yusufyk19" target="_blank">GitHub</a>
+      </p>
+    </div>
+  </section>
+
 </body>
 </html>
