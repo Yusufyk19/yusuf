@@ -14,7 +14,7 @@
       padding: 0;
       font-family: 'Ysabeau Infant', sans-serif;
       color: #ffffff;
-      background: url('https://www.nasa.gov/wp-content/uploads/2022/07/webb-deep-field.png') no-repeat center center fixed;
+      background: url('https://cdn.pixabay.com/photo/2022/07/12/16/41/james-webb-7317147_1280.jpg') no-repeat center center fixed;
       background-size: cover;
       scroll-behavior: smooth;
       animation: fadeIn 1s ease-in;
@@ -63,7 +63,25 @@
       margin-bottom: 1rem;
     }
 
-    img {
+    .about-container {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-img {
+      max-width: 200px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+
+    img.full {
       width: 100%;
       border-radius: 8px;
       margin-top: 1rem;
@@ -100,8 +118,12 @@
 
   <section class="section">
     <h2>Hakkımda</h2>
-    <p>Ben Yusuf. Alanya Alaaddin Keykubat Üniversitesi'nde Elektrik-Elektronik Mühendisliği okuyorum. Uzay teknolojilerine büyük ilgim var. Bu site, projelerimi ve ilgi alanlarımı paylaşmak için oluşturuldu.</p>
-    <img src="WhatsApp%20Image%202025-04-09%20at%2012.50.24%20AM.jpeg" alt="Profil Fotoğrafım" />
+    <div class="about-container">
+      <div class="about-text">
+        <p>Ben Yusuf. Alanya Alaaddin Keykubat Üniversitesi'nde Elektrik-Elektronik Mühendisliği okuyorum. Uzay teknolojilerine büyük ilgim var. Bu site, projelerimi ve ilgi alanlarımı paylaşmak için oluşturuldu.</p>
+      </div>
+      <img src="WhatsApp%20Image%202025-04-09%20at%2012.50.24%20AM.jpeg" alt="Profil Fotoğrafım" class="about-img" />
+    </div>
   </section>
 
   <section class="section">
@@ -119,9 +141,8 @@
   <section class="section">
     <h2>Galeri</h2>
     <p>İşte bazı görseller:</p>
-    <img src="arduino_temp.jpg" alt="Fotoğraf 1" />
-    <img src="elektrik_kablo_foto.jpg" alt="Fotoğraf 2" />
-    <img src="yıldırım.resmi.jpg" alt="Fotoğraf 3" />
+    <img src="foto1.jpg" alt="Fotoğraf 1" class="full" />
+    <img src="foto2.jpg" alt="Fotoğraf 2" class="full" />
   </section>
 
   <div class="contact">
