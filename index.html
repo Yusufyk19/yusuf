@@ -25,7 +25,8 @@
       to { opacity: 1; }
     }
 
- <!DOCTYPE html>
+ 
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
@@ -101,7 +102,7 @@
   </style>
 </head>
 <body>
-  <div id="AffetNermissText">AFFET NERMİSS❤</div>
+  <div id="affetNermissText">AFFET NERMİSS ❤</div>
   <div id="message">❤ AFFET NERMİSS ... ❤</div>
   <canvas id="clickParticles"></canvas>
 
@@ -109,7 +110,7 @@
     const canvas = document.getElementById('clickParticles');
     const ctx = canvas.getContext('2d');
     const message = document.getElementById('message');
-    const teAmoText = document.getElementById('affetNermissText');
+    const affetNermissText = document.getElementById('affetNermissText');
     let particles = [];
 
     function resize() {
@@ -174,7 +175,7 @@
     setInterval(createRain, 150);
 
     // Quando clica no "AFFET NERMİSS 💔"
-    teAmoText.addEventListener('click', (e) => {
+    affetNermissText.addEventListener('click', (e) => {
       message.style.opacity = 1;
       setTimeout(() => {
         message.style.opacity = 0;
@@ -182,14 +183,12 @@
     });
 
     // Toque em celulares
-    teAmoText.addEventListener('touchstart', (e) => {
+    affetNermissText.addEventListener('touchstart', (e) => {
       message.style.opacity = 1;
       setTimeout(() => {
         message.style.opacity = 0;
       }, 3000);
     });
   </script>
-</body>
-</html>
 </body>
 </html>
