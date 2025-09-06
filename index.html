@@ -25,132 +25,171 @@
       to { opacity: 1; }
     }
 
-    header {
-      background-color: rgba(0, 0, 0, 0.7);
-      text-align: center;
-      padding: 2rem 1rem;
-      animation: slideDown 1s ease;
+ <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Te Amo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+      height: 100vh;
+      touch-action: manipulation;
     }
 
-    @keyframes slideDown {
-      from { transform: translateY(-50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    h1 {
-      font-family: 'Yeseva One', serif;
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .section {
-      background-color: rgba(0, 0, 0, 0.6);
-      margin: 2rem auto;
-      padding: 2rem;
-      max-width: 900px;
-      border-radius: 16px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .section:hover {
-      transform: scale(1.01);
-    }
-
-    .section h2 {
-      font-family: 'Yeseva One', serif;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .about-container {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .about-text {
-      flex: 1;
-    }
-
-    .about-img {
-      max-width: 200px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-    }
-
-    img.full {
-      width: 100%;
-      border-radius: 8px;
-      margin-top: 1rem;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 10px 20px;
-      margin-top: 1rem;
-      background-color: #ff6f00;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
+    #teAmoText {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ff69b4;
+      font-size: 48px;
       font-weight: bold;
-      transition: background-color 0.3s;
-    }
-
-    .button:hover {
-      background-color: #ff9000;
-    }
-
-    .contact {
+      z-index: 10;
       text-align: center;
-      font-size: 1.2rem;
-      margin-top: 2rem;
+      animation: pulse 1.5s infinite;
+      cursor: pointer;
+    }
+
+    @keyframes pulse {
+      0% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.1); }
+      100% { transform: translate(-50%, -50%) scale(1); }
+    }
+
+    #message {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 32px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      z-index: 11;
+      pointer-events: none;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .rain {
+      position: absolute;
+      top: -100px;
+      color: #ff69b4;
+      animation: fall linear infinite;
+      font-size: 18px;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Yusuf Kürt</h1>
-    <p>Elektrik-Elektronik Mühendisliği Öğrencisi</p>
-  </header>
+  <div id="teAmoText">TE AMO ❤</div>
+  <div id="message">❤ TE AMO ... ❤</div>
+  <canvas id="clickParticles"></canvas>
 
-  <section class="section">
-    <h2>Hakkımda</h2>
-    <div class="about-container">
-      <div class="about-text">
-        <p>Ben Yusuf. Alanya Alaaddin Keykubat Üniversitesi'nde Elektrik-Elektronik Mühendisliği okuyorum. Uzay teknolojilerine büyük ilgim var. Bu site, projelerimi ve ilgi alanlarımı paylaşmak için oluşturuldu.</p>
-      </div>
-      <img src="WhatsApp%20Image%202025-04-09%20at%2012.50.24%20AM.jpeg" alt="Profil Fotoğrafım" class="about-img" />
-    </div>
-  </section>
+  <script>
+    const canvas = document.getElementById('clickParticles');
+    const ctx = canvas.getContext('2d');
+    const message = document.getElementById('message');
+    const teAmoText = document.getElementById('teAmoText');
+    let particles = [];
 
-  <section class="section">
-    <h2>Proje 1: Yıldırım Enerjisini Elektrik Enerjisine Dönüştürmek</h2>
-    <p>Bu projede, yıldırımın ani ve yüksek enerjili doğasını kontrol altına alarak kullanılabilir elektrik enerjisine dönüştürmeyi hedefliyorum.</p>
-    <a href="proje1.html" class="button">Daha fazla bilgi</a>
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
 
-  </section>
+    function createParticles(x, y) {
+      for (let i = 0; i < 20; i++) {
+        particles.push({
+          x,
+          y,
+          size: Math.random() * 5 + 2,
+          speedX: (Math.random() - 0.5) * 5,
+          speedY: (Math.random() - 0.5) * 5,
+          alpha: 1
+        });
+      }
+    }
 
-  <section class="section">
-    <h2>Proje 2: Elektromanyetik Asansör</h2>
-    <p>Yüksek gökdelenlerde çok hızlı yukarı çıkmak için elektromanyetik kuvvetlerden faydalanan modern bir asansör sistemi tasarlıyorum.</p>
-    <a href="proje2.html" class="button">Daha fazla bilgi</a>
+    document.addEventListener('click', e => {
+      createParticles(e.clientX, e.clientY);
+    });
 
-  </section>
+    document.addEventListener('touchstart', e => {
+      for (let touch of e.touches) {
+        createParticles(touch.clientX, touch.clientY);
+      }
+    });
 
-  <section class="section">
-    <h2>Galeri</h2>
-    <p>İşte bazı görseller:</p>
-     <img src="uglum.musa.jpg" alt="Fotoğraf 1" class="full" />
-    <img src="elektrik_kablo_foto.jpg" alt="Fotoğraf 2" class="full" />
-    <img src="yıldırım.resmi.jpg" alt="Fotoğraf 3" class="full" />
-    <img src="arduino_temp.jpg" alt="Fotoğraf 4" class="full" />
-  </section>
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p, i) => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+        p.alpha -= 0.02;
+        if (p.alpha <= 0) particles.splice(i, 1);
+        else {
+          ctx.fillStyle = `rgba(255, 105, 180, ${p.alpha})`;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
 
-  <div class="contact">
-    <p>İletişim: <a href="mailto:yusuf.kurt4956@gmail.com" style="color: #ffb347;">yusuf.kurt4956@gmail.com</a></p>
-  </div>
+    function createRain() {
+      const rain = document.createElement('div');
+      rain.classList.add('rain');
+      rain.innerText = 'TE AMO';
+      rain.style.left = Math.random() * window.innerWidth + 'px';
+      rain.style.animationDuration = (2 + Math.random() * 3) + 's';
+      rain.style.fontSize = (16 + Math.random() * 8) + 'px';
+      document.body.appendChild(rain);
+      setTimeout(() => rain.remove(), 6000);
+    }
+
+    setInterval(createRain, 150);
+
+    // Quando clica no "TE AMO 💔"
+    teAmoText.addEventListener('click', (e) => {
+      message.style.opacity = 1;
+      setTimeout(() => {
+        message.style.opacity = 0;
+      }, 1000); // Esconde depois de 3 segundos
+    });
+
+    // Toque em celulares
+    teAmoText.addEventListener('touchstart', (e) => {
+      message.style.opacity = 1;
+      setTimeout(() => {
+        message.style.opacity = 0;
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
 </body>
 </html>
