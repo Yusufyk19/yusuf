@@ -101,15 +101,15 @@
   </style>
 </head>
 <body>
-  <div id="teAmoText">TE AMO ❤</div>
-  <div id="message">❤ TE AMO ... ❤</div>
+  <div id="AffetNermissText">AFFET NERMİSS❤</div>
+  <div id="message">❤ AFFET NERMİSS ... ❤</div>
   <canvas id="clickParticles"></canvas>
 
   <script>
     const canvas = document.getElementById('clickParticles');
     const ctx = canvas.getContext('2d');
     const message = document.getElementById('message');
-    const teAmoText = document.getElementById('teAmoText');
+    const teAmoText = document.getElementById('affetNermissText');
     let particles = [];
 
     function resize() {
@@ -163,7 +163,7 @@
     function createRain() {
       const rain = document.createElement('div');
       rain.classList.add('rain');
-      rain.innerText = 'TE AMO';
+      rain.innerText = 'AFFET NERMİSS';
       rain.style.left = Math.random() * window.innerWidth + 'px';
       rain.style.animationDuration = (2 + Math.random() * 3) + 's';
       rain.style.fontSize = (16 + Math.random() * 8) + 'px';
